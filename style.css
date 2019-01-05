@@ -15,8 +15,6 @@ header{
 	position: absolute;
 	right: 10%;
 	text-align: center;
-	border: 1px solid #cccccc;
-	border-bottom: 1px solid #F6F6F7;
 	z-index: 2;
 }
 
@@ -58,6 +56,10 @@ header{
 	color: #888888;
 }
 
+#size-choose-buttons .active{
+	border: 2px solid #222222;
+}
+
 #add-button{
 	background: none;
 	border: 2px solid black;
@@ -65,11 +67,12 @@ header{
 	margin-top: 30px;
 	font-weight: bold;
 	color: #222222;
+	transition: all 0.2s;
 }
 
 
-
 .mini-cart{
+	display: none;
 	border: 1px solid #cccccc;
 	width: 350px;
 	position: absolute;

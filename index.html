@@ -10,6 +10,7 @@
 
 	<link rel = 'stylesheet' href = 'style.css'>
 	<link rel = 'stylesheet' href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -125,5 +126,41 @@
 		let cartItemNum = cartItems['sizeS'] + cartItems['sizeM'] + cartItems['sizeL'];
 		document.getElementById('added-num').innerHTML = cartItemNum;
 	});
+
+	$(document).ready(function(){
+		$('.cart-icon, .mini-cart').hover(
+			function(){
+				$('.cart-icon').css({
+					'background-color': 'white',
+					'border': '1px solid #cccccc',
+					'border-bottom': '1px solid white'
+				});
+				$('.mini-cart').css('display', 'block');
+			},
+			function(){
+				$('.cart-icon').css({
+					'background': 'none',
+					'border': 'none'
+				});
+				$('.mini-cart').css('display', 'none');
+			}
+		);
+
+		$('#add-button').hover(
+			function(){
+				$(this).css({
+					'color': 'white',
+					'background-color': 'black'
+				});
+			},
+			function(){
+				$(this).css({
+					'color': 'black',
+					'background-color': 'white'
+				});				
+			}
+		);
+	});
+
 </script>
 </html>
