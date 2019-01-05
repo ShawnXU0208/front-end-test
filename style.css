@@ -14,6 +14,10 @@ header{
 	line-height: 40px;
 	position: absolute;
 	right: 10%;
+	text-align: center;
+	border: 1px solid #cccccc;
+	border-bottom: 1px solid #F6F6F7;
+	z-index: 2;
 }
 
 .product-image img{
@@ -62,3 +66,50 @@ header{
 	font-weight: bold;
 	color: #222222;
 }
+
+
+
+.mini-cart{
+	border: 1px solid #cccccc;
+	width: 350px;
+	position: absolute;
+	right: 10%;
+	top: 40px;
+	background-color: white;
+	z-index: 1;
+	padding: 0px 17px 20px 17px;
+	margin-top: -1px;
+}
+
+.cart-item{
+	margin-top: 17px;
+}
+
+.cart-item img{
+	width: 25%;
+	height: auto;
+	vertical-align: text-top;
+	margin-right: 10px;
+}
+
+.cart-item-description{
+	display: inline-block;
+	width: 40%;
+	vertical-align: text-top;
+	font-size: smaller;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
