@@ -53,9 +53,9 @@
 						</p>
 					</div>
 					<div class = 'product-buying-manipulate'>
-						<p class = 'size-display'>SIZE*<span>S</span></p>
+						<p class = 'size-display'>SIZE*<span id = 'choosed-size'></span></p>
 
-						<div class = 'size-choose-buttons'>
+						<div id = 'size-choose-buttons'>
 							<button>S</button>
 							<button>M</button>
 							<button>L</button>							
@@ -68,4 +68,22 @@
 		</div>
 	</body>
 </body>
+
+<script>
+	{
+		let parentElem = document.getElementById('size-choose-buttons');
+		let buttons = parentElem.getElementsByTagName('button');
+		for(let i = 0; i < buttons.length; i++){
+			buttons[i].addEventListener('click', function(){
+				let existedActiveBtn = parentElem.getElementsByClassName('active');
+				if(existedActiveBtn.length == 1){
+					existedActiveBtn[0].className = existedActiveBtn[0].className.replace(' active', '');
+				}
+
+				this.className += ' active';
+				document.getElementById('choosed-size').innerHTML = this.innerHTML; 
+			});
+		}
+	}
+</script>
 </html>
