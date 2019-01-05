@@ -9,18 +9,33 @@
 	<title>Online Tee Store</title>
 
 	<link rel = 'stylesheet' href = 'style.css'>
+	<link rel = 'stylesheet' href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
 </head>
 
 <body>
 	<header>
-		<div class = 'cart-icon'></div>
+		<div class = 'cart-icon'>
+			<p>My Cart(<span id = 'added-num'>0</span>)</p>
+		</div>
 	</header>
 
 	<body>
-		<div class = 'product-image'></div>
-		<div class = 'product-details'>
-			<div class = 'product-content-display'></div>
-			<div class = 'product-buying-manipulate'></div>
+		<div class = 'container'>
+			<div class = 'row'>
+				<div class = 'product-image col-sm-6 col-12'>
+					<img class = 'img-fluid' src = 'imgs/classic-tee.jpg' alt = 'classic-tee' />
+				</div>
+				<div class = 'product-details col-sm-6 col-12'>
+					<div class = 'product-content-display'>
+						<h2 class = 'product-title'>Classic Tee</h2>
+						<p class = 'product-price'>$75.00</p>
+						<p class = 'product-description'>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+					<div class = 'product-buying-manipulate'></div>
+				</div>				
+			</div>
 		</div>
 	</body>
 </body>
