@@ -11,23 +11,25 @@
 	<link rel = 'stylesheet' href = 'style.css'>
 	<link rel = 'stylesheet' href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 	<header>
 		<div class = 'cart-icon'>
-			<p>My Cart(<span id = 'added-num'>0</span>)</p>
+			<span id = 'icon-large'>My Cart<span id = 'added-num'>(0)</span></span>
+			<i id = 'icon-small' class = 'fa fa-shopping-cart' style = 'font-size:24px'></i>
 		</div>
 		<div class = 'mini-cart'></div>
 	</header>
 
 	<body>
-		<div class = 'container'>
+		<div class = 'container-fluid' style = 'padding: 0 5%'>
 			<div class = 'row'>
-				<div class = 'product-image col-sm-6 col-12'>
+				<div class = 'product-image col-sm-6 col-12' id = 'first-column'>
 					<img class = 'img-fluid' src = 'imgs/classic-tee.jpg' alt = 'classic-tee' />
 				</div>
-				<div class = 'product-details col-sm-6 col-12'>
+				<div class = 'product-details col-sm-6 col-12' id = 'second-column'>
 					<div class = 'product-content-display'>
 						<h2 class = 'product-title'>Classic Tee</h2>
 						<p class = 'product-price'>$75.00</p>
@@ -35,7 +37,7 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
 					</div>
-					<div class = 'product-buying-manipulate'>
+					<div id = 'product-buying-manipulate'>
 						<p class = 'size-display'>SIZE*<span id = 'choosed-size'></span></p>
 
 						<div id = 'size-choose-buttons'>
@@ -124,7 +126,7 @@
 		}
 
 		let cartItemNum = cartItems['sizeS'] + cartItems['sizeM'] + cartItems['sizeL'];
-		document.getElementById('added-num').innerHTML = cartItemNum;
+		document.getElementById('added-num').innerHTML = '(' + cartItemNum + ')';
 	});
 
 	$(document).ready(function(){
@@ -160,6 +162,16 @@
 				});				
 			}
 		);
+	});
+
+
+	$(window).on('resize', function(){
+		let screenWidth = $(this).width();
+		if(screenWidth < 768 && screenWidth >= 576){
+			$('#product-buying-manipulate').detach().appendTo('body');
+		}else{
+			$('#product-buying-manipulate').detach().appendTo('#second-column');
+		}
 	});
 
 </script>
