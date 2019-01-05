@@ -17,25 +17,7 @@
 		<div class = 'cart-icon'>
 			<p>My Cart(<span id = 'added-num'>0</span>)</p>
 		</div>
-		<div class = 'mini-cart'>
-			<div class = 'cart-item'>
-				<img src = 'imgs/classic-tee.jpg' alt = 'classic-tee' />
-				<div class = 'cart-item-description'>
-					<p>Classic Tee</p>
-					<p><span>1</span>x <span style = 'font-weight: bold'>$75.00</span></p>
-					<p>Size: <span>S</span></p>
-				</div>
-			</div>
-
-			<div class = 'cart-item'>
-				<img src = 'imgs/classic-tee.jpg' alt = 'classic-tee' />
-				<div class = 'cart-item-description'>
-					<p>Classic Tee</p>
-					<p><span>2</span>x <span style = 'font-weight: bold'>$75.00</span></p>
-					<p>Size: <span>M</span></p>
-				</div>
-			</div>
-		</div>
+		<div class = 'mini-cart'></div>
 	</header>
 
 	<body>
@@ -61,7 +43,7 @@
 							<button>L</button>							
 						</div>
 
-						<button class = 'add-button'>ADD TO CART</button>
+						<button id = 'add-button'>ADD TO CART</button>
 					</div>
 				</div>				
 			</div>
@@ -69,7 +51,25 @@
 	</body>
 </body>
 
+<div id = 'cart-item-template' class = 'cart-item' style = 'display: none'>
+	<img src = 'imgs/classic-tee.jpg' alt = 'classic-tee' />
+	<div class = 'cart-item-description'>
+		<p>Classic Tee</p>
+		<p><span class = 'added-number'></span>x <span style = 'font-weight: bold'>$75.00</span></p>
+		<p>Size: <span class = 'choosed-size'></span></p>
+	</div>
+</div>
+
 <script>
+
+
+	let choosedSize;
+	let cartItems = {
+		sizeS: 0,
+		sizeM: 0,
+		sizeL: 0
+	}
+
 	{
 		let parentElem = document.getElementById('size-choose-buttons');
 		let buttons = parentElem.getElementsByTagName('button');
@@ -82,8 +82,48 @@
 
 				this.className += ' active';
 				document.getElementById('choosed-size').innerHTML = this.innerHTML; 
+				choosedSize = this.innerHTML;
 			});
 		}
 	}
+
+
+	// an assisting function, for creating a new cart item element and append it to its parent
+	let addNewProduct = function(size){
+		let newItemElem = document.getElementById('cart-item-template').cloneNode(true);
+		newItemElem.getElementsByClassName('choosed-size')[0].innerHTML = size;
+		newItemElem.style.display = 'block';
+		newItemElem.getElementsByClassName('added-number')[0].setAttribute('id', size + '-number');
+		newItemElem.getElementsByClassName('added-number')[0].innerHTML = 1;
+		document.getElementsByClassName('mini-cart')[0].appendChild(newItemElem);
+	};
+
+	document.getElementById('add-button').addEventListener('click', function(){
+		if(choosedSize == 'S'){
+			cartItems['sizeS'] += 1;
+			if(cartItems['sizeS'] == 1){
+				addNewProduct('S');
+			}else{
+				document.getElementById('S-number').innerHTML = cartItems['sizeS'];
+			}
+		}else if(choosedSize == 'M'){
+			cartItems['sizeM'] += 1;
+			if(cartItems['sizeM'] == 1){
+				addNewProduct('M');
+			}else{
+				document.getElementById('M-number').innerHTML = cartItems['sizeM'];
+			}			
+		}else if(choosedSize == 'L'){
+			cartItems['sizeL'] += 1;
+			if(cartItems['sizeL'] == 1){
+				addNewProduct('L');
+			}else{
+				document.getElementById('L-number').innerHTML = cartItems['sizeL'];
+			}
+		}
+
+		let cartItemNum = cartItems['sizeS'] + cartItems['sizeM'] + cartItems['sizeL'];
+		document.getElementById('added-num').innerHTML = cartItemNum;
+	});
 </script>
 </html>
